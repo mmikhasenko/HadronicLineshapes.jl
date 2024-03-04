@@ -1,12 +1,7 @@
 using Test
 using ResonanceLineshapes
-# using Plots
 
-# theme(:wong2, frame=:box, grid=false, minorticks=true,
-#     guidefontvalign=:top, guidefonthalign=:right,
-#     xlim=(:auto, :auto), ylim=(:auto, :auto),
-#     lw=1.2, lab="", colorbar=false)
-
+# BreitWigner fixed width
 Γ0 = 0.2
 bw = BreitWigner(1.6, Γ0)
 @testset "BW call" begin
@@ -14,6 +9,8 @@ bw = BreitWigner(1.6, Γ0)
     refA = -1.2039660056657226 + 0.5665722379603404im
     @test bw((bw.m + Γ0)^2) ≈ refA
 end
+
+# BlattWeisskopf
 
 bw0 = BlattWeisskopf{0}(1.5)
 bw1 = BlattWeisskopf{1}(1.5)
