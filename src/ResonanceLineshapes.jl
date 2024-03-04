@@ -9,12 +9,12 @@ export ComposeFlexFunc
 export ScaleFlexFunc
 export ProductFlexFunc
 import Base: *
-include(joinpath("lineshapes", "operations.jl"))
+include("operations.jl")
 
 export BlattWeisskopf
-include(joinpath("lineshapes", "formfactors.jl"))
+include("formfactors.jl")
 
 export BreitWigner
-include(joinpath("lineshapes", "shapes.jl"))
+include("shapes.jl")
 
 end # module ResonanceLineshapes
