@@ -28,15 +28,6 @@ bw3 = BlattWeisskopf{3}(1.5)
     @test all((bw0(3), bw1(3), bw2(3), bw3(3)) .≈ refs)
 end
 
-# let
-#     plot()
-#     map((1, 2, 3, 4, 5)) do l
-#         ff = BlattWeisskopf{l}(1.5)
-#         plot!(x -> ff(x), 0, 5.0)
-#     end
-#     plot!()
-# end
-
 bw1_of_sq = bw1(z -> z^2)
 bw0_scale = bw0 * 5.5
 X = bw * bw3
@@ -49,24 +40,6 @@ kill_dep = bw(bw0)
     @test X(0.3) ≈ ref
     @test kill_dep(4.4) == bw(1.0)
 end
-
-# let m = 0.77, Γ = 0.15
-#     ρ(e) = sqrt(e - 0.28)
-#     plot()
-#     bw = BreitWigner(m, Γ)
-#     plot!(0.28, 0.7, lab="const width") do e
-#         e * angle(bw(e^2))
-#     end
-#     bw = BreitWigner(m, Γ, 0.14, 0.14, 1, 5.0)
-#     plot!(0.28, 0.7, lab="P-wave (5/Gev)") do e
-#         e * angle(bw(e^2))
-#     end
-#     bw = BreitWigner(m, Γ, 0.14, 0.14, 1, 1.5)
-#     plot!(0.28, 0.7, lab="P-wave (1.5/Gev)") do e
-#         e * angle(bw(e^2))
-#     end
-#     vline!([m], lab="")
-# end
 
 # test ComposeFlexFunc AbstractFlexFunc of Function
 square(x) = abs2(x)
