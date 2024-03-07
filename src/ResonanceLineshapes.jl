@@ -11,6 +11,7 @@ export ProductFlexFunc
 import Base: *
 include("operations.jl")
 
+export breakup
 export BlattWeisskopf
 include("formfactors.jl")
 
