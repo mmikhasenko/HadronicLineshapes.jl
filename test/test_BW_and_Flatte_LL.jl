@@ -102,14 +102,15 @@ end
 function BreitWignerFF_lL(; m0, Γ0, L, l)
     R1, R5 = 1.5, 5.0
     bw = BreitWigner(m0, Γ0, mp, mK, l, R1)
+    # 
     p(σ) = breakup(sqrt(σ), mp, mK)
     ff_decay = BlattWeisskopf{l}(R1)(p)
     q(σ) = breakup(mΛb, sqrt(σ), 0)
     ff_production = BlattWeisskopf{L}(R5)(q)
     ff = ff_production * ff_decay
+    # 
     bw * ff * (1 / ff(m0^2))
 end
-
 
 
 L1820 = (l=3, m0=1.82, Γ0=0.08, L=2)
