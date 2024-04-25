@@ -1,4 +1,4 @@
-using ResonanceLineshapes
+using HadronicLineshapes
 using Parameters
 using Test
 
@@ -52,7 +52,7 @@ end
 
 reference_shape = Flatte1405(l=0, m0=1.405, Γ0=0.0505, L=5)
 
-# Implementation using ResonanceLineshapes.jl building blocks
+# Implementation using HadronicLineshapes.jl building blocks
 shape = let
     @unpack m0, Γ0, L = reference_shape
     #  

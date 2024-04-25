@@ -1,4 +1,4 @@
-module ResonanceLineshapes
+module HadronicLineshapes
 
 using Parameters
 
@@ -18,4 +18,4 @@ include("formfactors.jl")
 export BreitWigner
 include("shapes.jl")
 
-end # module ResonanceLineshapes
+end # module HadronicLineshapes

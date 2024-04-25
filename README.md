@@ -1,25 +1,25 @@
-# ResonanceLineshapes.jl
+# HadronicLineshapes.jl
 
 ## Context
 
-The `ResonanceLineshapes` package is designed for the study of hadron reactions through resonance modeling. It facilitates the application of reaction theory to describe interactions within particle physics, providing a robust framework for analyzing resonance phenomena. This Julia package introduces a comprehensive approach to model resonance lineshapes, crucial for the theoretical understanding and experimental analysis of hadron reactions.
+The `HadronicLineshapes` package is designed for the study of hadron reactions through resonance modeling. It facilitates the application of reaction theory to describe interactions within particle physics, providing a robust framework for analyzing resonance phenomena. This Julia package introduces a comprehensive approach to model resonance lineshapes, crucial for the theoretical understanding and experimental analysis of hadron reactions.
 
 ## Installation
 
-To install `ResonanceLineshapes`, use the Julia package manager. From the Julia REPL, enter package mode by pressing `]`, then run:
+To install `HadronicLineshapes`, use the Julia package manager. From the Julia REPL, enter package mode by pressing `]`, then run:
 
 ```julia
-pkg> add https://github.com/mmikhasenko/ResonanceLineshapes.jl
+pkg> add https://github.com/mmikhasenko/HadronicLineshapes.jl
 ```
 
-Ensure that you have Julia installed on your system and that the `Parameters` package, a dependency of `ResonanceLineshapes`, is also installed using the same method.
+Ensure that you have Julia installed on your system and that the `Parameters` package, a dependency of `HadronicLineshapes`, is also installed using the same method.
 
 ## Usage and API Reference
 
 ### Basic Usage
 
 ```julia
-using ResonanceLineshapes
+using HadronicLineshapes
 
 # Create a Breit-Wigner constant-width lineshape function
 bw = BreitWigner(1.6, 0.2)
@@ -83,12 +83,12 @@ end
 
 ## Contributing
 
-Contributions to `ResonanceLineshapes` are welcome.
+Contributions to `HadronicLineshapes` are welcome.
 To contribute, please submit a pull request or open an issue for discussion regarding bugs or feature requests.
 
 ## License
 
-`ResonanceLineshapes` is licensed under the MIT License. See the LICENSE file in the project repository for more details.
+`HadronicLineshapes` is licensed under the MIT License. See the LICENSE file in the project repository for more details.
 
 ## References
 
