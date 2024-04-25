@@ -1,5 +1,5 @@
 using Test
-using ResonanceLineshapes
+using HadronicLineshapes
 
 # BreitWigner fixed width
 Γ0 = 0.2

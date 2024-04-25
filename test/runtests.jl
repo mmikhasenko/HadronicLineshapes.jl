@@ -1,4 +1,4 @@
-using ResonanceLineshapes
+using HadronicLineshapes
 
 include("test_lineshapes.jl")
 

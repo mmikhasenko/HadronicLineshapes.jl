@@ -1,4 +1,4 @@
-name = "ResonanceLineshapes"
+name = "HadronicLineshapes"
 uuid = "49c9d978-1f9d-4e96-a984-0a9783c0b9bf"
 authors = ["Mikhail Mikhasenko <mikhail.mikhasenko@cern.ch>"]
 version = "0.1.0"
