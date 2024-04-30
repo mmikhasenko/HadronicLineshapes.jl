@@ -57,3 +57,23 @@ function (bw::BreitWigner)(σ::Number)
     mbw(σ)
 end
 
+
+@with_kw struct Flatte <: AbstractFlexFunc
+    m::Float64
+    gsq1::Float64
+    ma1::Float64
+    mb1::Float64
+    gsq2::Float64
+    ma2::Float64
+    mb2::Float64
+end
+
+function (bw::Flatte)(σ::Number)
+    l, d = 0, 1.0
+    mbw = MultichannelBreitWigner(bw.m,
+        SVector(
+            (; gsq=bw.gsq1, ma=bw.ma1, mb=bw.mb1, l, d),
+            (; gsq=bw.gsq2, ma=bw.ma2, mb=bw.mb2, l, d)))
+    mbw(σ)
+end
+

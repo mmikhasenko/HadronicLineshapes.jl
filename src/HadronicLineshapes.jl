@@ -18,6 +18,7 @@ include("formfactors.jl")
 
 export BreitWigner
 export MultichannelBreitWigner
+export Flatte
 include("shapes.jl")
 
 end # module HadronicLineshapes

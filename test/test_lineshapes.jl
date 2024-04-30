@@ -19,6 +19,21 @@ bw2 = MultichannelBreitWigner(1.6, 0.2, 0.1, 0.2, 1, 1.5)
     @test bw1(2.2) ≈ refA
 end
 
+# Flatte
+
+bw1 = MultichannelBreitWigner(1.6,
+    [(gsq=0.35, ma=0.1, mb=0.2, l=0, d=1.0),
+        (gsq=0.35, ma=0.3, mb=0.25, l=0, d=1.5)])
+bw2 = Flatte(1.6,
+    0.35, 0.1, 0.2,
+    0.35, 0.3, 0.25)
+@testset "Flatte is a l=0 case of MultichannelBreitWigner with 2 channels" begin
+    @test bw1(2.2) ≈ bw2(2.2)
+    refA = 0.28391117207354793 + 0.8414491018597429im
+    @test bw1(2.2) ≈ refA
+end
+
+
 # BlattWeisskopf
 
 bw0 = BlattWeisskopf{0}(1.5)
