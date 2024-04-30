@@ -58,7 +58,7 @@ shape = let
     #  
     _p0′ = breakup(m0, mπ, mΣ)
     gsq = Γ0 / (2_p0′) * m0
-    bw = BreitWigner(
+    bw = MultichannelBreitWigner(
         m=m0,
         channels=[
             (; gsq, ma=mp, mb=mK, l=0, d=0),
@@ -118,12 +118,12 @@ L1520 = (l=2, m0=1.519, Γ0=0.016, L=3)
 L1810 = (l=1, m0=1.79, Γ0=0.11, L=5)
 
 for L in (L1820, L1520, L1810)
-    shape = BreitWignerFF_lL(; L...)
-    reference_shape = _BreitWignerFF_lL(; L...)
+    _shape = BreitWignerFF_lL(; L...)
+    _reference_shape = _BreitWignerFF_lL(; L...)
     # σ = 1.5ˆ2
-    @test reference_shape(1.5^2) ≈ shape(1.5^2)
-    @test reference_shape(1.5^2) ≈ shape(1.5^2)
+    @test _reference_shape(1.5^2) ≈ _shape(1.5^2)
+    @test _reference_shape(1.5^2) ≈ _shape(1.5^2)
     # σ = 2.5ˆ2
-    @test reference_shape(2.5^2) ≈ shape(2.5^2)
-    @test reference_shape(2.5^2) ≈ shape(2.5^2)
+    @test _reference_shape(2.5^2) ≈ _shape(2.5^2)
+    @test _reference_shape(2.5^2) ≈ _shape(2.5^2)
 end

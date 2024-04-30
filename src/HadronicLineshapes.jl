@@ -1,5 +1,6 @@
 module HadronicLineshapes
 
+using StaticArrays
 using Parameters
 
 export AbstractFlexFunc
