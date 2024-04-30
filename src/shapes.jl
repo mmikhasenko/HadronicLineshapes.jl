@@ -76,4 +76,3 @@ function (bw::Flatte)(σ::Number)
             (; gsq=bw.gsq2, ma=bw.ma2, mb=bw.mb2, l, d)))
     mbw(σ)
 end
-
