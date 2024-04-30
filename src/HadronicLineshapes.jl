@@ -16,6 +16,7 @@ export BlattWeisskopf
 include("formfactors.jl")
 
 export BreitWigner
+export MultichannelBreitWigner
 include("shapes.jl")
 
 end # module HadronicLineshapes
