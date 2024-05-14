@@ -33,6 +33,19 @@ bw2 = Flatte(1.6,
     @test bw1(2.2) ≈ refA
 end
 
+# BlattWeisskopf
+
+pL0 = MomentumPower{0}()
+pL1 = MomentumPower{1}()
+pL2 = MomentumPower{2}()
+pL3 = MomentumPower{3}()
+
+@testset "MomentumPower" begin
+    @test pL0(2.0) == 1.0
+    @test pL1(2.0) == 2.0
+    @test pL2(2.0) == 4.0
+    @test pL3(2.0) == 8.0
+end
 
 # BlattWeisskopf
 

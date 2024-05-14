@@ -14,6 +14,7 @@ include("operations.jl")
 
 export breakup
 export BlattWeisskopf
+export MomentumPower
 include("formfactors.jl")
 
 export BreitWigner
