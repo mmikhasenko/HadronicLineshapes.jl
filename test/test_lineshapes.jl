@@ -86,3 +86,7 @@ bw_square = WrapFlexFunction(square)(bw)
 end
 
 
+@testset "cross cut breakup" begin
+    f(z) = breakup(z, 0.25, 0.25)
+    @test imag(f(0.4 + 1e-3im)) * imag(f(0.1 + 1e-3im)) > 0
+end

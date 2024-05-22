@@ -3,7 +3,7 @@
 struct BlattWeisskopf{L} <: AbstractFlexFunc
     d::Float64
 end
-breakup(m, m1, m2) = sqrt((m - (m1 + m2)) * (m + (m1 + m2)) * (m - (m1 - m2)) * (m + (m1 - m2))) / 2m
+breakup(m, m1, m2) = sqrt((m - (m1 + m2)) * (m + (m1 + m2))) * sqrt((m - (m1 - m2)) * (m + (m1 - m2))) / 2m
 (ff::BlattWeisskopf{L})(p::Number) where {L} = error("BlattWeisskopf{L} is not defined for L>7")
 (ff::BlattWeisskopf{0})(p::Number) = one(p)
 (ff::BlattWeisskopf{1})(p::Number) = (z² = (ff.d * p)^2;
