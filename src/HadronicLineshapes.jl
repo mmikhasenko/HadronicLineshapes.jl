@@ -15,6 +15,7 @@ include("operations.jl")
 export breakup
 export BlattWeisskopf
 export MomentumPower
+export orbital_momentum
 include("formfactors.jl")
 
 export BreitWigner

@@ -54,6 +54,18 @@ bw1 = BlattWeisskopf{1}(1.5)
 bw2 = BlattWeisskopf{2}(1.5)
 bw3 = BlattWeisskopf{3}(1.5)
 
+@testset "Orbital Momentum call" begin
+    @test orbital_momentum(bw0) == 0
+    @test orbital_momentum(bw1) == 1
+    @test orbital_momentum(bw2) == 2
+    @test orbital_momentum(bw3) == 3
+    @test orbital_momentum(pL0) == 0
+    @test orbital_momentum(pL1) == 1
+    @test orbital_momentum(pL2) == 2
+    @test orbital_momentum(pL3) == 3
+end
+
+
 @testset "BlattWeisskopf" begin
     @test bw0(0.0) == 1.0
     @test bw1(0.0) == bw2(0.0) == bw3(0.0) == 0.0

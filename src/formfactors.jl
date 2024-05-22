@@ -34,3 +34,6 @@ chi_poly7(z²) = 18261468225 + 1404728325z² + 58939650z²^2 + 1819125z²^3 + 47
 # threshold p^L
 struct MomentumPower{L} <: AbstractFlexFunc end
 (ff::MomentumPower{L})(p::Number) where {L} = p^L
+
+orbital_momentum(x::BlattWeisskopf{L}) where {L} = L
+orbital_momentum(x::MomentumPower{L}) where {L} = L
