@@ -25,6 +25,7 @@ function (bw::MultichannelBreitWigner)(σ::Number)
     end
     BW(σ, m0, Γ)
 end
+(bw::MultichannelBreitWigner)(σ::Real) = (bw)(σ + 1im * eps())
 
 function MultichannelBreitWigner(m::Real, Γ::Real, ma::Number, mb::Number, l::Int, d::Real)
     _p0 = breakup(m, ma, mb)

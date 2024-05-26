@@ -33,6 +33,14 @@ bw2 = Flatte(1.6,
     @test bw1(2.2) ≈ refA
 end
 
+
+# MultichannelBreitWigner below the lower threshold
+@testset "MultichannelBreitWigner below the lower threshold" begin
+    @test bw1(0.55^2) ≈ 0.42519559686852254 + 0.08692927347446346im
+    @test bw1(0.54^2 + 1im * eps()) ≈ 0.40579181834450434 + 0.07814146111256404im
+    @test bw1(0.54^2) ≈ bw1(0.54^2 + 1im * eps())
+end
+
 # BlattWeisskopf
 
 pL0 = MomentumPower{0}()
