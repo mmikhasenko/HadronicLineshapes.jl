@@ -58,7 +58,7 @@ function (bw::BreitWigner)(σ::Number)
     mbw(σ)
 end
 
-function (dist::BreitWigner)(pars)
+function (dist::BreitWigner)(pars::Dict)
     @unpack x = dist
     σ = pars[x]
     bw(σ)
