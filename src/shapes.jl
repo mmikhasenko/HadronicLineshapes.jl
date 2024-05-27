@@ -58,6 +58,12 @@ function (bw::BreitWigner)(σ::Number)
     mbw(σ)
 end
 
+function (dist::BreitWigner)(pars)
+    @unpack x = dist
+    σ = pars[x]
+    bw(σ)
+end
+
 
 @with_kw struct Flatte <: AbstractFlexFunc
     m::Float64
