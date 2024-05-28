@@ -27,6 +27,12 @@ function (bw::MultichannelBreitWigner)(σ::Number)
 end
 (bw::MultichannelBreitWigner)(σ::Real) = (bw)(σ + 1im * eps())
 
+function (dist::MultichannelBreitWigner)(pars::Dict)
+    @assert length(pars)==1 "There should be only one parameter for Multichannel Breit-Wigner"
+    σ = first(values(pars))
+    dist(σ)
+end
+
 function MultichannelBreitWigner(m::Real, Γ::Real, ma::Number, mb::Number, l::Int, d::Real)
     _p0 = breakup(m, ma, mb)
     FF = BlattWeisskopf{l}(d)
