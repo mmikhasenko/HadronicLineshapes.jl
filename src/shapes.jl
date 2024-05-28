@@ -58,6 +58,12 @@ function (bw::BreitWigner)(σ::Number)
     mbw(σ)
 end
 
+function (dist::BreitWigner)(pars::Dict)
+    @assert length(pars)==1 "There should be only one parameter for Breit-Wigner"
+    σ = first(values(pars))
+    dist(σ)
+end
+
 
 @with_kw struct Flatte <: AbstractFlexFunc
     m::Float64
