@@ -59,9 +59,9 @@ function (bw::BreitWigner)(σ::Number)
 end
 
 function (dist::BreitWigner)(pars::Dict)
-    @unpack x = dist
-    σ = pars[x]
-    bw(σ)
+    @assert length(pars)==1 "There should be only one parameter for Breit-Wigner"
+    σ = first(values(pars))
+    dist(σ)
 end
 
 
