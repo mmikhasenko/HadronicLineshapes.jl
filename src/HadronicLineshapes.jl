@@ -4,7 +4,6 @@ using StaticArrays
 using Parameters
 
 export AbstractFlexFunc
-export UnionFlexFunc
 export WrapFlexFunction
 export ComposeFlexFunc
 export ScaleFlexFunc

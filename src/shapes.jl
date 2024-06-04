@@ -3,6 +3,8 @@
 
 BW(σ, m, Γ) = 1 / (m^2 - σ - 1im * m * Γ)
 
+# ## MultichannelBreitWigner 
+
 @with_kw struct MultichannelBreitWigner{N} <: AbstractFlexFunc
     m::Float64
     channels::SVector{N,<:NamedTuple{(:gsq, :ma, :mb, :l, :d)}}
@@ -13,7 +15,6 @@ function MultichannelBreitWigner(m::Real, channels::Vector{<:NamedTuple{(:gsq, :
     N = length(channels)
     return MultichannelBreitWigner(m, SVector{N}(channels...))
 end
-
 
 function (bw::MultichannelBreitWigner)(σ::Number)
     m0 = bw.m
@@ -36,7 +37,9 @@ end
 MultichannelBreitWigner(m::Float64, Γ::Float64) =
     MultichannelBreitWigner{1}(m, Γ, 0.0, 0.0, 0, 1.0)
 
-# const BreitWigner = MultichannelBreitWigner{1}
+
+
+# ## Breit-Wigner function
 
 @with_kw struct BreitWigner <: AbstractFlexFunc
     m::Float64
@@ -58,6 +61,7 @@ function (bw::BreitWigner)(σ::Number)
     mbw(σ)
 end
 
+# ## Flatte function
 
 @with_kw struct Flatte <: AbstractFlexFunc
     m::Float64

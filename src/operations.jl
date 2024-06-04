@@ -2,8 +2,7 @@
 # 
 abstract type AbstractFlexFunc end
 
-const UnionFlexFunc = Union{Function,AbstractFlexFunc}
-struct WrapFlexFunction{T<:UnionFlexFunc} <: AbstractFlexFunc
+struct WrapFlexFunction{T} <: AbstractFlexFunc
     F::T
 end
 (L::WrapFlexFunction)(σ::Number) = L.F(σ)
@@ -15,7 +14,7 @@ end
 (f::AbstractFlexFunc)(a::Function) = ComposeFlexFunc(a, f)
 (f::AbstractFlexFunc)(a::AbstractFlexFunc) = ComposeFlexFunc(a, f)
 # 
-struct ScaleFlexFunc{T<:UnionFlexFunc,X<:Number} <: AbstractFlexFunc
+struct ScaleFlexFunc{T,X<:Number} <: AbstractFlexFunc
     F::T
     S::X
 end
@@ -23,7 +22,7 @@ end
 *(x::Number, f::AbstractFlexFunc) = ScaleFlexFunc(f, x)
 (p::ScaleFlexFunc)(σ::Number) = p.F(σ) * p.S
 # 
-struct ProductFlexFunc{T1<:UnionFlexFunc,T2<:UnionFlexFunc} <: AbstractFlexFunc
+struct ProductFlexFunc{T1,T2} <: AbstractFlexFunc
     F1::T1
     F2::T2
 end

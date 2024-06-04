@@ -33,7 +33,6 @@ bw2 = Flatte(1.6,
     @test bw1(2.2) ≈ refA
 end
 
-
 # MultichannelBreitWigner below the lower threshold
 @testset "MultichannelBreitWigner below the lower threshold" begin
     @test bw1(0.55^2) ≈ 0.42519559686852254 + 0.08692927347446346im
@@ -73,7 +72,6 @@ bw3 = BlattWeisskopf{3}(1.5)
     @test orbital_momentum(pL3) == 3
 end
 
-
 @testset "BlattWeisskopf" begin
     @test bw0(0.0) == 1.0
     @test bw1(0.0) == bw2(0.0) == bw3(0.0) == 0.0
@@ -104,7 +102,6 @@ bw_square = WrapFlexFunction(square)(bw)
     @test bw_e(1.6) ≈ 1im / 1.6 / 0.2
     @test bw_square(1.6^2) ≈ 1 / (1.6 * 0.2)^2
 end
-
 
 @testset "cross cut breakup" begin
     f(z) = breakup(z, 0.25, 0.25)

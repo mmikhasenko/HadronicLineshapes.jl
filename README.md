@@ -35,7 +35,6 @@ on the functions like multiplication and composition.
 - **`AbstractFlexFunc`**: Base type for flexible function operations.
 
 - **Utility Types and Functions**:
-  - `UnionFlexFunc`
   - `WrapFlexFunction`
   - `ComposeFlexFunc`
   - `ScaleFlexFunc`
