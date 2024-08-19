@@ -27,7 +27,7 @@ using HadronicLineshapes
 bw = BreitWigner(1.6, 0.2)
 ```
 
-See model in [src/shapes.jl](src/shapes.jl).
+See model in [src/shapes.jl](../src/shapes.jl).
 
 ### API Overview
 
