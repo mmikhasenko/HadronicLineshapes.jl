@@ -12,8 +12,6 @@
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 [![All Contributors](https://img.shields.io/github/all-contributors/mmikhasenko/HadronicLineshapes.jl?labelColor=5e1ec7&color=c0ffee&style=flat-square)](#contributors)
 
-
-
 ## Context
 
 The `HadronicLineshapes` package is designed for the study of hadron reactions through resonance modeling. It facilitates the application of reaction theory to describe interactions within particle physics, providing a robust framework for analyzing resonance phenomena. This Julia package introduces a comprehensive approach to model resonance lineshapes, crucial for the theoretical understanding and experimental analysis of hadron reactions.
@@ -49,10 +47,10 @@ on the functions like multiplication and composition.
 - **`AbstractFlexFunc`**: Base type for flexible function operations.
 
 - **Utility Types and Functions**:
-  - `WrapFlexFunction`
-  - `ComposeFlexFunc`
-  - `ScaleFlexFunc`
-  - `ProductFlexFunc`
+    - `WrapFlexFunction`
+    - `ComposeFlexFunc`
+    - `ScaleFlexFunc`
+    - `ProductFlexFunc`
 
 These types and functions provide a versatile set of tools for creating and manipulating lineshape functions, supporting operations like composition, scaling, and forming products.
 
@@ -60,8 +58,8 @@ These types and functions provide a versatile set of tools for creating and mani
 
 The package includes comprehensive tests covering various functionalities, including `BreitWigner` and `BlattWeisskopf` implementations and their operations. Users are encouraged to explore the test section for examples of validating the accuracy and performance of the lineshape functions and report the issues.
 
-
 Here is an example of Blatt-Weisskopf form-factors for orbital momentum from 1 to 5.
+
 ```julia
 let
     plot()
@@ -74,6 +72,7 @@ end
 ```
 
 A comparison of a resonance lineshapes for different form-factors is constructed as below.
+
 ```julia
 let m = 0.77, Γ = 0.15
     ρ(e) = sqrt(e - 0.28) # phase space stuff
@@ -98,7 +97,6 @@ end
 
 If you want to make contributions of any kind, please first that a look into our [contributing guide directly on GitHub](docs/src/90-contributing.md) or the [contributing page on the website](https://mmikhasenko.github.io/HadronicLineshapes.jl/dev/90-contributing/).
 
-
 ## License
 
 `HadronicLineshapes` is licensed under the MIT License. See the LICENSE file in the project repository for more details.
@@ -120,4 +118,3 @@ If you want to make contributions of any kind, please first that a look into our
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-

@@ -18,4 +18,3 @@ Documentation for [HadronicLineshapes](https://github.com/mmikhasenko/HadronicLi
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 ```
-
