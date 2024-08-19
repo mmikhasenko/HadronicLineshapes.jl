@@ -27,11 +27,9 @@ using HadronicLineshapes
 bw = BreitWigner(1.6, 0.2)
 ```
 
-See model in [src/shapes.jl](../../src/shapes.jl).
-
 ### API Overview
 
-All of the lineshapes are inhereted from `AbstractFlexFunc` enabling mathematical operations
+All of the lineshapes are inherited from `AbstractFlexFunc` enabling mathematical operations
 on the functions like multiplication and composition.
 
 - **`AbstractFlexFunc`**: Base type for flexible function operations.
