@@ -1,5 +1,5 @@
 using HadronicLineshapes
-using Parameters
+using HadronicLineshapes.Parameters
 using Test
 
 
