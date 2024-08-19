@@ -103,8 +103,8 @@ If you want to make contributions of any kind, please first that a look into our
 
 ## References
 
-- JPAC Group: [https://www.jpac-physics.org/](https://www.jpac-physics.org/)
-- Reaction Theory Schools: [http://jpac.nucleares.unam.mx/schools.html](http://jpac.nucleares.unam.mx/schools.html)
+- JPAC Group: [jpac-physics.org](https://www.jpac-physics.org/)
+- Reaction Theory Schools: [webpage](http://jpac.nucleares.unam.mx/schools.html)
 
 ---
 
