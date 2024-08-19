@@ -10,7 +10,7 @@ bw = BreitWigner(1.6, Γ0)
     @test bw((bw.m + Γ0)^2) ≈ refA
 end
 
-bw1 = BreitWigner(; m=1.6, Γ=0.2, ma=0.1, mb=0.2, l=1, d=1.5)
+bw1 = BreitWigner(; m = 1.6, Γ = 0.2, ma = 0.1, mb = 0.2, l = 1, d = 1.5)
 bw2 = MultichannelBreitWigner(1.6, 0.2, 0.1, 0.2, 1, 1.5)
 
 @testset "BreitWigner is the same as MultichannelBreitWigner with one channel" begin
@@ -21,12 +21,14 @@ end
 
 # Flatte
 
-bw1 = MultichannelBreitWigner(1.6,
-    [(gsq=0.35, ma=0.1, mb=0.2, l=0, d=1.0),
-        (gsq=0.35, ma=0.3, mb=0.25, l=0, d=1.5)])
-bw2 = Flatte(1.6,
-    0.35, 0.1, 0.2,
-    0.35, 0.3, 0.25)
+bw1 = MultichannelBreitWigner(
+    1.6,
+    [
+        (gsq = 0.35, ma = 0.1, mb = 0.2, l = 0, d = 1.0),
+        (gsq = 0.35, ma = 0.3, mb = 0.25, l = 0, d = 1.5),
+    ],
+)
+bw2 = Flatte(1.6, 0.35, 0.1, 0.2, 0.35, 0.3, 0.25)
 @testset "Flatte is a l=0 case of MultichannelBreitWigner with 2 channels" begin
     @test bw1(2.2) ≈ bw2(2.2)
     refA = 0.28391117207354793 + 0.8414491018597429im

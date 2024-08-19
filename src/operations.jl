@@ -1,5 +1,5 @@
 # Operations
-# 
+#
 abstract type AbstractFlexFunc end
 
 struct WrapFlexFunction{T} <: AbstractFlexFunc
@@ -13,7 +13,7 @@ end
 (f::ComposeFlexFunc)(σ::Number) = f.F(f.A(σ))
 (f::AbstractFlexFunc)(a::Function) = ComposeFlexFunc(a, f)
 (f::AbstractFlexFunc)(a::AbstractFlexFunc) = ComposeFlexFunc(a, f)
-# 
+#
 struct ScaleFlexFunc{T,X<:Number} <: AbstractFlexFunc
     F::T
     S::X
@@ -21,7 +21,7 @@ end
 *(f::AbstractFlexFunc, x::Number) = ScaleFlexFunc(f, x)
 *(x::Number, f::AbstractFlexFunc) = ScaleFlexFunc(f, x)
 (p::ScaleFlexFunc)(σ::Number) = p.F(σ) * p.S
-# 
+#
 struct ProductFlexFunc{T1,T2} <: AbstractFlexFunc
     F1::T1
     F2::T2
@@ -30,4 +30,4 @@ end
 *(F1::Function, F2::AbstractFlexFunc) = ProductFlexFunc(F1, F2)
 *(F1::AbstractFlexFunc, F2::AbstractFlexFunc) = ProductFlexFunc(F1, F2)
 (p::ProductFlexFunc)(σ::Number) = p.F1(σ) * p.F2(σ)
-# 
+#

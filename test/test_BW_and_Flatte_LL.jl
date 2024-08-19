@@ -1,5 +1,5 @@
 using HadronicLineshapes
-using Parameters
+using HadronicLineshapes.Parameters
 using Test
 
 
@@ -45,25 +45,26 @@ function (lineshape::Flatte1405)(σ)
     Γ = Γ1 + Γ2
     R5 = 5
     _q, _q0 = _breakup(mΛb^2, σ, 0^2), _breakup(mΛb^2, m0^2, 0^2)
-    return _BW(σ, m0, Γ) *
-           (_q / _q0)^L * _h(_q * R5, L) / _h(_q0 * R5, L)
+    return _BW(σ, m0, Γ) * (_q / _q0)^L * _h(_q * R5, L) / _h(_q0 * R5, L)
 end
 
 
-reference_shape = Flatte1405(l=0, m0=1.405, Γ0=0.0505, L=5)
+reference_shape = Flatte1405(l = 0, m0 = 1.405, Γ0 = 0.0505, L = 5)
 
 # Implementation using HadronicLineshapes.jl building blocks
 shape = let
     @unpack m0, Γ0, L = reference_shape
-    #  
+    #
     _p0′ = breakup(m0, mπ, mΣ)
     gsq = Γ0 / (2_p0′) * m0
     bw = MultichannelBreitWigner(
-        m=m0,
-        channels=[
-            (; gsq, ma=mp, mb=mK, l=0, d=0),
-            (; gsq, ma=mΣ, mb=mπ, l=0, d=0)])
-    # 
+        m = m0,
+        channels = [
+            (; gsq, ma = mp, mb = mK, l = 0, d = 0),
+            (; gsq, ma = mΣ, mb = mπ, l = 0, d = 0),
+        ],
+    )
+    #
     R5 = 5.0
     ff = BlattWeisskopf{L}(R5)
     normalization = 1 / ff(breakup(mΛb, m0, 0))
@@ -72,7 +73,9 @@ end
 
 @testset "Flatte1405" begin
     @test reference_shape(1.5^2) ≈ shape(1.5^2) ≈ -2.268218968333875 + 1.7510620457952242im
-    @test reference_shape(2.5^2) ≈ shape(2.5^2) ≈ -0.22568090542208105 + 0.029085847195023364im
+    @test reference_shape(2.5^2) ≈
+          shape(2.5^2) ≈
+          -0.22568090542208105 + 0.029085847195023364im
 end
 
 # Implementation from scratch
@@ -88,34 +91,34 @@ function (lineshape::_BreitWignerFF_lL)(σ::Float64)
     _p = _breakup(σ, mp^2, mK^2)
     _q0 = _breakup(mΛb^2, m0^2, 0.0^2)
     _p0 = _breakup(m0^2, mp^2, mK^2)
-    # 
+    #
     R5 = 5
     R1 = 1.5 # 1/GeV
     Γ = Γ0 * (_p / _p0)^(2l + 1) * m0 / sqrt(σ) * _h(_p * R1, l)^2 / _h(_p0 * R1, l)^2
-    # 
-    return _BW(σ, m0, Γ) *
-           (_q / _q0)^L * _h(_q * R5, L) / _h(_q0 * R5, L) *
-           (_p / _p0)^l * _h(_p * R1, l) / _h(_p0 * R1, l)
+    #
+    return _BW(σ, m0, Γ) * (_q / _q0)^L * _h(_q * R5, L) / _h(_q0 * R5, L) *
+           (_p / _p0)^l *
+           _h(_p * R1, l) / _h(_p0 * R1, l)
 end
 
 # Reimplementation using `ResoananceLineshapes.jl`
 function BreitWignerFF_lL(; m0, Γ0, L, l)
     R1, R5 = 1.5, 5.0
     bw = BreitWigner(m0, Γ0, mp, mK, l, R1)
-    # 
+    #
     p(σ) = breakup(sqrt(σ), mp, mK)
     ff_decay = BlattWeisskopf{l}(R1)(p)
     q(σ) = breakup(mΛb, sqrt(σ), 0)
     ff_production = BlattWeisskopf{L}(R5)(q)
     ff = ff_production * ff_decay
-    # 
+    #
     bw * ff * (1 / ff(m0^2))
 end
 
 
-L1820 = (l=3, m0=1.82, Γ0=0.08, L=2)
-L1520 = (l=2, m0=1.519, Γ0=0.016, L=3)
-L1810 = (l=1, m0=1.79, Γ0=0.11, L=5)
+L1820 = (l = 3, m0 = 1.82, Γ0 = 0.08, L = 2)
+L1520 = (l = 2, m0 = 1.519, Γ0 = 0.016, L = 3)
+L1810 = (l = 1, m0 = 1.79, Γ0 = 0.11, L = 5)
 
 for L in (L1820, L1520, L1810)
     _shape = BreitWignerFF_lL(; L...)

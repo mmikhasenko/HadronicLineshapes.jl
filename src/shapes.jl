@@ -1,9 +1,9 @@
 # Lineshapes
-# 
+#
 
 BW(σ, m, Γ) = 1 / (m^2 - σ - 1im * m * Γ)
 
-# ## MultichannelBreitWigner 
+# ## MultichannelBreitWigner
 
 @with_kw struct MultichannelBreitWigner{N} <: AbstractFlexFunc
     m::Float64
@@ -11,7 +11,10 @@ BW(σ, m, Γ) = 1 / (m^2 - σ - 1im * m * Γ)
 end
 
 # MultichannelBreitWigner constructor from Vector
-function MultichannelBreitWigner(m::Real, channels::Vector{<:NamedTuple{(:gsq, :ma, :mb, :l, :d)}})
+function MultichannelBreitWigner(
+    m::Real,
+    channels::Vector{<:NamedTuple{(:gsq, :ma, :mb, :l, :d)}},
+)
     N = length(channels)
     return MultichannelBreitWigner(m, SVector{N}(channels...))
 end
@@ -56,7 +59,8 @@ MultichannelBreitWigner(m::Float64, Γ::Float64) =
     d::Float64
 end
 
-BreitWigner(m::Float64, Γ::Float64) = BreitWigner(; m, Γ, ma=0.0, mb=0.0, l=0, d=1.0)
+BreitWigner(m::Float64, Γ::Float64) =
+    BreitWigner(; m, Γ, ma = 0.0, mb = 0.0, l = 0, d = 1.0)
 
 function (bw::BreitWigner)(σ::Number)
     @unpack m, ma, mb, l, d = bw
@@ -81,9 +85,12 @@ end
 
 function (bw::Flatte)(σ::Number)
     l, d = 0, 1.0
-    mbw = MultichannelBreitWigner(bw.m,
+    mbw = MultichannelBreitWigner(
+        bw.m,
         SVector(
-            (; gsq=bw.gsq1, ma=bw.ma1, mb=bw.mb1, l, d),
-            (; gsq=bw.gsq2, ma=bw.ma2, mb=bw.mb2, l, d)))
+            (; gsq = bw.gsq1, ma = bw.ma1, mb = bw.mb1, l, d),
+            (; gsq = bw.gsq2, ma = bw.ma2, mb = bw.mb2, l, d),
+        ),
+    )
     mbw(σ)
 end
