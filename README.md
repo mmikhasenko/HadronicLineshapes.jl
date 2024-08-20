@@ -45,11 +45,6 @@ If you want to make contributions of any kind, please first that a look into our
 
 `HadronicLineshapes` is licensed under the MIT License. See the LICENSE file in the project repository for more details.
 
-## References
-
-- JPAC Group: [jpac-physics.org](https://www.jpac-physics.org/)
-- Reaction Theory Schools: [webpage](http://jpac.nucleares.unam.mx/schools.html)
-
 ---
 
 ### Contributors
