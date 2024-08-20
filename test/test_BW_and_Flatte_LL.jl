@@ -35,7 +35,7 @@ _BW(σ, m, Γ) = 1 / (m^2 - σ - 1im * m * Γ)
 _Kallen(x, y, z) = x^2 + y^2 + z^2 - 2x * y - 2y * z - 2z * x
 _breakup(m0sq, m1sq, m2sq) = sqrt(_Kallen(m0sq, m1sq, m2sq)) / (2sqrt(m0sq))
 function (lineshape::Flatte1405)(σ)
-    (; m0, Γ0, L, l) = lineshape
+    @unpack m0, Γ0, L, l = lineshape
     l != 0 && error("Not intended to be calle with l!=0, l=$l")
     m1, m2 = mK, mp
     _p = _breakup(σ, m1^2, m2^2)
@@ -86,7 +86,7 @@ end
     l::Int
 end
 function (lineshape::_BreitWignerFF_lL)(σ::Float64)
-    (; m0, Γ0, L, l) = lineshape
+    @unpack m0, Γ0, L, l = lineshape
     _q = _breakup(mΛb^2, σ, 0.0^2)
     _p = _breakup(σ, mp^2, mK^2)
     _q0 = _breakup(mΛb^2, m0^2, 0.0^2)
