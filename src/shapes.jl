@@ -21,13 +21,13 @@ end
 
 function (bw::MultichannelBreitWigner)(σ::Number)
     m0 = bw.m
-    Γ = sum(bw.channels) do channel
+    mΓ = sum(bw.channels) do channel
         @unpack gsq, ma, mb, l, d = channel
         FF = BlattWeisskopf{l}(d)
         _p = breakup(sqrt(σ), ma, mb)
         gsq * 2_p / sqrt(σ) * FF(_p)^2
     end
-    BW(σ, m0, Γ)
+    BW(σ, m0, Γ/m0)
 end
 (bw::MultichannelBreitWigner)(σ::Real) = (bw)(σ + 1im * eps())
 
