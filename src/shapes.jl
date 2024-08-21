@@ -27,7 +27,7 @@ function (bw::MultichannelBreitWigner)(σ::Number)
         _p = breakup(sqrt(σ), ma, mb)
         gsq * 2_p / sqrt(σ) * FF(_p)^2
     end
-    BW(σ, m0, mΓ/m0)
+    BW(σ, m0, mΓ / m0)
 end
 (bw::MultichannelBreitWigner)(σ::Real) = (bw)(σ + 1im * eps())
 
