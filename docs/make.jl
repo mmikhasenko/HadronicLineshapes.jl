@@ -17,6 +17,7 @@ makedocs(;
     sitename = "HadronicLineshapes.jl",
     format = Documenter.HTML(;
         canonical = "https://mmikhasenko.github.io/HadronicLineshapes.jl",
+        repolink = "https://github.com/mmikhasenko/HadronicLineshapes.jl",
     ),
     pages = [
         "index.md"
