@@ -31,14 +31,14 @@ bw1 = MultichannelBreitWigner(
 bw2 = Flatte(1.6, 0.35, 0.1, 0.2, 0.35, 0.3, 0.25)
 @testset "Flatte is a l=0 case of MultichannelBreitWigner with 2 channels" begin
     @test bw1(2.2) ≈ bw2(2.2)
-    refA = 0.28391117207354793 + 0.8414491018597429im
+    refA = 0.6268627705629269 + 1.1611754995124888im
     @test bw1(2.2) ≈ refA
 end
 
 # MultichannelBreitWigner below the lower threshold
 @testset "MultichannelBreitWigner below the lower threshold" begin
-    @test bw1(0.55^2) ≈ 0.42519559686852254 + 0.08692927347446346im
-    @test bw1(0.54^2 + 1im * eps()) ≈ 0.40579181834450434 + 0.07814146111256404im
+    @test bw1(0.55^2) ≈ 0.4358515993981993 + 0.055692403570256954im
+    @test bw1(0.54^2 + 1im * eps()) ≈ 0.42179982350210526 + 0.05164365276548291im
     @test bw1(0.54^2) ≈ bw1(0.54^2 + 1im * eps())
 end
 

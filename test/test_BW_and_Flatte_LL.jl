@@ -56,7 +56,7 @@ shape = let
     @unpack m0, Γ0, L = reference_shape
     #
     _p0′ = breakup(m0, mπ, mΣ)
-    gsq = Γ0 / (2_p0′) * m0
+    gsq = m0 * Γ0 / (2_p0′) * m0
     bw = MultichannelBreitWigner(
         m = m0,
         channels = [

@@ -27,7 +27,7 @@ function (bw::MultichannelBreitWigner)(σ::Number)
         _p = breakup(sqrt(σ), ma, mb)
         gsq * 2_p / sqrt(σ) * FF(_p)^2
     end
-    BW(σ, m0, Γ/m0)
+    BW(σ, m0, mΓ/m0)
 end
 (bw::MultichannelBreitWigner)(σ::Real) = (bw)(σ + 1im * eps())
 
@@ -40,7 +40,7 @@ end
 function MultichannelBreitWigner(m::Real, Γ::Real, ma::Number, mb::Number, l::Int, d::Real)
     _p0 = breakup(m, ma, mb)
     FF = BlattWeisskopf{l}(d)
-    gsq = Γ / (2_p0) * m / FF(_p0)^2
+    gsq = m * Γ / (2_p0) * m / FF(_p0)^2
     return MultichannelBreitWigner(m, SVector((; gsq, ma, mb, l, d)))
 end
 MultichannelBreitWigner(m::Float64, Γ::Float64) =
@@ -66,7 +66,7 @@ function (bw::BreitWigner)(σ::Number)
     @unpack m, ma, mb, l, d = bw
     _p0 = breakup(m, ma, mb)
     FF = BlattWeisskopf{l}(d)
-    gsq = bw.Γ / (2_p0) * m / FF(_p0)^2
+    gsq = m * bw.Γ / (2_p0) * m / FF(_p0)^2
     mbw = MultichannelBreitWigner(m, SVector((; gsq, ma, mb, l, d)))
     mbw(σ)
 end
