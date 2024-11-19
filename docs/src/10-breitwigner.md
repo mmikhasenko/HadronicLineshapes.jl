@@ -21,7 +21,7 @@ This parametrization assumes a single channel decay with no form factors or orbi
 For an elastic resonance with `l`-wave a energy-dependent expression is used for the width,
 
 ```math
-\Gamma(\sigma) = \Gamma_0 \left( \frac{q(\sigma)}{q_0} \right)^{2l+1} \frac{F_l^2(q(\sigma) d)}{F_l^2(q_0 d)}
+\Gamma(\sigma) = \Gamma_0 \left( \frac{q(\sigma)}{q_0} \right)^{2l+1} \frac{m}{\sqrt{\sigma}} \frac{F_l^2(q(\sigma) d)}{F_l^2(q_0 d)}
 ```
 
 where $q = q(\sqrt{\sigma}, m_1, m_2)$ is the momentum of the decay products in the center-of-mass frame,
