@@ -1,5 +1,21 @@
 # Form Factors
 #
+# Form Factors
+#
+"""
+    BlattWeisskopf{L}(d::Float64)
+
+Create a lambda-function for the Blatt-Weisskopf barrier factor.
+This functor expects momentum as an input.
+
+# Arguments
+- `d::Float64`: The scale parameter.
+
+# Example
+```julia
+bw = BlattWeisskopf{1}(1.5)
+result = bw(0.5)  # Call with momentum 0.5
+"""
 struct BlattWeisskopf{L} <: AbstractFlexFunc
     d::Float64
 end
