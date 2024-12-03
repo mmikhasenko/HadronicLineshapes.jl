@@ -8,7 +8,7 @@ export WrapFlexFunction
 export ComposeFlexFunc
 export ScaleFlexFunc
 export ProductFlexFunc
-import Base: *
+import Base: *, +
 include("operations.jl")
 
 export breakup
