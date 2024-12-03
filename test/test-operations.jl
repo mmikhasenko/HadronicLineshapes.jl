@@ -1,4 +1,3 @@
-# FILE: test/test_operations.jl
 using Test
 using HadronicLineshapes
 

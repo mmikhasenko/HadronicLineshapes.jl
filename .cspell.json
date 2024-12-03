@@ -1,0 +1,18 @@
+{
+    "dictionaries": [
+        "project",
+        "julia"
+    ],
+    "dictionaryDefinitions": [
+        {
+            "name": "project",
+            "path": "./.cspell/project.txt"
+        },
+        {
+            "name": "julia",
+            "path": "./.cspell/julia.txt"
+        }
+    ],
+    "language": "en",
+    "version": "0.2"
+}

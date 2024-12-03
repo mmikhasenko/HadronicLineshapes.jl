@@ -1,7 +1,7 @@
 using HadronicLineshapes
 
-include("test_lineshapes.jl")
+include("test-lineshapes.jl")
 
-include("test_BW_and_Flatte_LL.jl")
+include("test-BW-and-Flatte-LL.jl")
 
 include("test-operations.jl")
