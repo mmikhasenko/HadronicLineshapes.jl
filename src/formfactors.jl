@@ -1,7 +1,3 @@
-# Form Factors
-#
-# Form Factors
-#
 """
     BlattWeisskopf{L}(d::Float64)
 
@@ -9,9 +5,10 @@ Create a lambda-function for the Blatt-Weisskopf barrier factor.
 This functor expects momentum as an input.
 
 ```math
-F_l^2 = \frac(z^{2l}}{\chi_l(z^2)}
-````
-the function returns `F_l`, taking a square root of the $F_l^2$ expression.
+F_l^2 = \frac(z^{2l}}{\\chi_l(z^2)}
+```
+where \$\\chi_l\$ is an order-l polynomial of \$z^2\$.
+The function returns `F_l`, taking a square root of the \$F_l^2\$ expression.
 
 # Arguments
 - `d::Float64`: The scale parameter.
