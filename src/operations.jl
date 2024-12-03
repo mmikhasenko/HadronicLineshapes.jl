@@ -31,3 +31,12 @@ end
 *(F1::AbstractFlexFunc, F2::AbstractFlexFunc) = ProductFlexFunc(F1, F2)
 (p::ProductFlexFunc)(σ::Number) = p.F1(σ) * p.F2(σ)
 #
+struct SumFlexFunc{T1,T2} <: AbstractFlexFunc
+    F1::T1
+    F2::T2
+end
++(F1::AbstractFlexFunc, F2::Function) = SumFlexFunc(F1, F2)
++(F1::Function, F2::AbstractFlexFunc) = SumFlexFunc(F1, F2)
++(F1::AbstractFlexFunc, F2::AbstractFlexFunc) = SumFlexFunc(F1, F2)
+(p::SumFlexFunc)(σ::Number) = p.F1(σ) + p.F2(σ)
+#

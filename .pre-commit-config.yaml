@@ -8,7 +8,7 @@ repos:
             language: fail
             files: "\\.rej$"
     - repo: https://github.com/pre-commit/pre-commit-hooks
-      rev: v4.6.0
+      rev: v5.0.0
       hooks:
           - id: check-json
           - id: check-toml
@@ -26,20 +26,20 @@ repos:
           - id: check-merge-conflict
             args: [--assume-in-merge]
     - repo: https://github.com/igorshubovych/markdownlint-cli
-      rev: v0.41.0
+      rev: v0.43.0
       hooks:
           - id: markdownlint-fix
     - repo: https://github.com/pre-commit/mirrors-prettier
       rev: "v4.0.0-alpha.8" # Use the sha or tag you want to point at
       hooks:
           - id: prettier
-            types_or: [yaml, json]
+            types_or: [yaml]
             exclude: ".copier-answers.yml"
     - repo: https://github.com/adrienverge/yamllint
       rev: v1.35.1
       hooks:
           - id: yamllint
     - repo: https://github.com/domluna/JuliaFormatter.jl
-      rev: v1.0.58
+      rev: v2.0.0
       hooks:
           - id: julia-formatter
