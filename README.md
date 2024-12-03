@@ -17,25 +17,26 @@ The `HadronicLineshapes` package provides a collection of models for describing 
 
 The package exposes the following key types and functions:
 
-- **`AbstractFlexFunc`**: Base type for flexible operations on lineshape functions.
-- **Utility Types**:
-    - **`WrapFlexFunction`**: Wraps functions for extended flexibility.
-    - **`ComposeFlexFunc`**: Enables the composition of multiple functions.
-    - **`ScaleFlexFunc`**: Allows scaling of functions.
-    - **`ProductFlexFunc`**: Facilitates the creation of product functions.
+- `AbstractFlexFunc`: Base type for flexible operations on lineshape functions.
+- Utility Types:
+    - `WrapFlexFunction`: Wraps functions for extended flexibility.
+    - `ComposeFlexFunc`: Enables the composition of multiple functions.
+    - `ScaleFlexFunc`: Allows scaling of functions.
+    - `ProductFlexFunc`: used to store a product of functions.
+    - `SumFlexFunc`: used to store a sum of functions.
 
-- **Form Factors**:
-    - **`BlattWeisskopf`**: Describes the Blatt-Weisskopf barrier factors.
-    - **`MomentumPower`**: Represents momentum-dependent terms in scattering.
+- Form Factors:
+    - `BlattWeisskopf`: Describes the Blatt-Weisskopf barrier factors.
+    - `MomentumPower`: Represents momentum-dependent terms in scattering.
 
-- **Lineshape Models**:
-    - **`BreitWigner`**: Standard Breit-Wigner resonance model.
-    - **`MultichannelBreitWigner`**: Breit-Wigner model extended to multiple channels.
-    - **`Flatte`**: Model for resonances near a threshold with coupled channels.
+- Lineshape Models:
+    - `BreitWigner`: Standard Breit-Wigner resonance model.
+    - `MultichannelBreitWigner`: Breit-Wigner model extended to multiple channels.
+    - `Flatte`: Model for resonances near a threshold with coupled channels.
 
-- **Functions**:
-    - **`breakup`**: Computes breakup momentum in two-body decays.
-    - **`orbital_momentum`**: Computes the orbital momentum in scattering processes.
+- Functions:
+    - `breakup`: Computes breakup momentum in two-body decays.
+    - `orbital_momentum`: Computes the orbital momentum in scattering processes.
 
 ## Contributing
 
