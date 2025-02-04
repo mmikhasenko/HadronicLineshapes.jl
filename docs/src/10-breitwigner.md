@@ -21,12 +21,12 @@ This parametrization assumes a single channel decay with no form factors or orbi
 For an elastic resonance with `l`-wave a energy-dependent expression is used for the width,
 
 ```math
-\Gamma(\sigma) = \Gamma_0 \left( \frac{q(\sigma)}{q_0} \right)^{2l+1} \frac{m}{\sqrt{\sigma}} \frac{F_l^2(q(\sigma) d)}{F_l^2(q_0 d)}
+\Gamma(\sigma) = \Gamma_0 \frac{q(\sigma)}{q_0} \frac{m}{\sqrt{\sigma}} \frac{F_l^2(q(\sigma) d)}{F_l^2(q_0 d)}
 ```
 
 where $q = q(\sqrt{\sigma}, m_1, m_2)$ is the momentum of the decay products in the center-of-mass frame,
 and $q_0$ is the momentum evaluated for the nominal mass of the resonance.
-By default, the Blatt-Weisskopf form factor are used for $F_l(q d)$.
+By default, the Blatt-Weisskopf form factor are used for $F_l(q d)$. The factors include $q^l$ dependence contributing to $q^{2l+1}$ dependence of the width $\Gamma(\sigma)$ on the break up momentum $q$.
 
 !!! tip "Using the BreitWigner Function"
     To create a `BreitWigner` instance in the `HadronicLineshapes` package, you can use the following constructor:
