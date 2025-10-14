@@ -18,7 +18,7 @@ theme(:boxed)
 bw1 = BreitWigner(1.5, 0.1);  # mass=1.5 GeV, width=0.1 GeV
 bw2 = BreitWigner(1.5, 0.1, 0.5, 0.3, 1, 1.0);  # ma=0.5, mb=0.3, l=1, d=1.0
 
-# They shapes are similar since the channel threshold at 0.1+0.5 = 0.6 GeV is far away from the nominal mass of 1.5 GeV.
+# They shapes are similar since the channel threshold at 0.3+0.5 = 0.9 GeV is far away from the nominal mass of 1.5 GeV.
 
 let
     m_range = range((bw1.m .+ bw1.Γ .* [-5, 3])..., 100)
