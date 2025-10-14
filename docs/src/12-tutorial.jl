@@ -38,6 +38,12 @@ bw3 = MultichannelBreitWigner(  # Two-channel Breit-Wigner
 );
 
 # The coupling of the first channel is adjusted to have a similar width as `bw1`, the second channel in S-wave is introduced to show a prominent distortion of the shape.
+# Both channels contribute to the total width.
+# The coupling `gsq` can be computed from its contribution (roughly speaking its partial width)
+# using the value of the momentum and a form-factor.
+# ```julia
+# gsq_calculated = m_resonance * partial_width / (2 * p_breakup / m_resonance) / BlattWeisskopf{l}(d)(p_breakup)^2
+# ```
 
 let
     m_range = range((bw1.m .+ bw1.Γ .* [-5, 3])..., 200)
