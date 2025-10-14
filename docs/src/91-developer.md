@@ -58,6 +58,20 @@ pre-commit run -a
 
 **Now, you can only commit if all the pre-commit tests pass**.
 
+
+### Link checking locally
+
+We use `lychee` for link checking in CI. You can run it locally to avoid waiting for CI:
+
+```bash
+# Install lychee
+# - brew install lychee  # macOS
+# - cargo install lychee  # via Cargo
+
+# Run against the repository root using the project config
+lychee --no-progress --config lychee.toml .
+```
+
 ## Testing
 
 As with most Julia packages, you can just open Julia in the repository folder, activate the environment, and run `test`:
@@ -109,9 +123,6 @@ We try to keep a linear history in this repo, so it is important to keep your br
 - If there are breaking changes, add the information to the commit message.
 
 ### Before creating a pull request
-
-!!! tip "Atomic git commits"
-    Try to create "atomic git commits" (recommended reading: [The Utopic Git History](https://blog.esciencecenter.nl/the-utopic-git-history-d44b81c09593)).
 
 - Make sure the tests pass.
 - Make sure the pre-commit tests pass.
