@@ -5,12 +5,14 @@ The implementation is consistent with the [Review on Resonances by Particle Data
 
 The form-factor is a function that provide an energy-behavior to a one-to-two transition amplitude.
 The physical interpretation of commonly-used form factors is limited. This package implements,
+
 ```julia
 BlattWeisskopf{L}(d::Float64)
 MomentumPower{L}()
 ```
 
 Both form-factors can be called on a single momentum variable `p`, but also on squared masses of the decay products,
+
 ```julia
 ff(p) # as a function of momentum
 ff(m0^2, m1^2, m2^2) # computes momentum from masses and calls ff(p)
@@ -27,13 +29,13 @@ F_l^2(z) = \frac{z^{2l}}{\chi_l(z^2)}
 ```
 
 where:
+
 - $z = d \cdot p$ is the scaled momentum
 - $d$ is the scale parameter (typically the interaction radius)
 - $p$ is the breakup momentum
 - $\chi_l(z^2)$ is an order-$l$ polynomial of $z^2$
 
 The function returns $F_l$, taking a square root of the $F_l^2$ expression.
-
 
 !!! tip "Form Factor Selection"
     Form factors can be called with either momentum or squared masses:
@@ -48,7 +50,6 @@ The function returns $F_l$, taking a square root of the $F_l^2$ expression.
     ```
 
     The package supports Blatt-Weisskopf form factors for orbital angular momentum $l = 0, 1, 2, 3, 4, 5, 6, 7$.
-
 
 ## Momentum Power Form Factors
 

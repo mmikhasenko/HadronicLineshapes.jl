@@ -26,20 +26,13 @@ breakup(m, m1, m2) =
 (ff::BlattWeisskopf{L})(p::Number) where {L} =
     error("BlattWeisskopf{L} is not defined for L>7")
 (ff::BlattWeisskopf{0})(p::Number) = one(p)
-(ff::BlattWeisskopf{1})(p::Number) = (z² = (ff.d * p)^2;
-sqrt(z² / chi_poly1(z²)))
-(ff::BlattWeisskopf{2})(p::Number) = (z² = (ff.d * p)^2;
-sqrt(z²^2 / chi_poly2(z²)))
-(ff::BlattWeisskopf{3})(p::Number) = (z² = (ff.d * p)^2;
-sqrt(z²^3 / chi_poly3(z²)))
-(ff::BlattWeisskopf{4})(p::Number) = (z² = (ff.d * p)^2;
-sqrt(z²^4 / chi_poly4(z²)))
-(ff::BlattWeisskopf{5})(p::Number) = (z² = (ff.d * p)^2;
-sqrt(z²^5 / chi_poly5(z²)))
-(ff::BlattWeisskopf{6})(p::Number) = (z² = (ff.d * p)^2;
-sqrt(z²^6 / chi_poly6(z²)))
-(ff::BlattWeisskopf{7})(p::Number) = (z² = (ff.d * p)^2;
-sqrt(z²^7 / chi_poly7(z²)))
+(ff::BlattWeisskopf{1})(p::Number) = (z² = (ff.d * p)^2; sqrt(z² / chi_poly1(z²)))
+(ff::BlattWeisskopf{2})(p::Number) = (z² = (ff.d * p)^2; sqrt(z²^2 / chi_poly2(z²)))
+(ff::BlattWeisskopf{3})(p::Number) = (z² = (ff.d * p)^2; sqrt(z²^3 / chi_poly3(z²)))
+(ff::BlattWeisskopf{4})(p::Number) = (z² = (ff.d * p)^2; sqrt(z²^4 / chi_poly4(z²)))
+(ff::BlattWeisskopf{5})(p::Number) = (z² = (ff.d * p)^2; sqrt(z²^5 / chi_poly5(z²)))
+(ff::BlattWeisskopf{6})(p::Number) = (z² = (ff.d * p)^2; sqrt(z²^6 / chi_poly6(z²)))
+(ff::BlattWeisskopf{7})(p::Number) = (z² = (ff.d * p)^2; sqrt(z²^7 / chi_poly7(z²)))
 
 # Three-argument call pattern: accepts squared masses
 (ff::BlattWeisskopf{L})(m0sq::Number, m1sq::Number, m2sq::Number) where {L} =

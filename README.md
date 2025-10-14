@@ -28,12 +28,12 @@ The package exposes the following key types and functions:
     - `orbital_momentum`: Computes the orbital momentum in scattering processes.
 
 All functions are inherited from `AbstractFlexFunc`, the base type that support arithmetic operations on functions. Particularly, the following operations are supported:
+
 - `WrapFlexFunction`: Wraps functions for extended flexibility.
 - `ComposeFlexFunc`: Enables the composition of multiple functions.
 - `ScaleFlexFunc`: Allows scaling of functions.
 - `ProductFlexFunc`: used to store a product of functions.
 - `SumFlexFunc`: used to store a sum of functions.
-
 
 ## Contributing
 
