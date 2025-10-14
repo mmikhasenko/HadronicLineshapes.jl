@@ -38,7 +38,7 @@ mbw = MultichannelBreitWigner(
 mbw = Flatte(1.6, 0.35, 0.1, 0.2, 0.35, 0.3, 0.25) # same as above
 ```
 
-See detailed definition in [lineshape documentation](10-breitwigner.md)
+See detailed definition in [lineshape documentation](10-breitwigner.md) and [form factor documentation](11-formfactors.md)
 
 ### API Overview
 
