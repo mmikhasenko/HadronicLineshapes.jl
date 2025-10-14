@@ -49,6 +49,12 @@ let
     annotate!(bw3.channels[2].ma, 20, text("channel-2 momentum\nis complex", :center, 10))
 end
 
+# Evaluation of the momentum below the threshold is working does to the following line,
+# ```julia
+# (bw::MultichannelBreitWigner)(σ::Real) = (bw)(σ + 1im * eps())
+# ```
+# When real value is passed, it's casted to a complex number with a small imaginary part.
+
 # ## Form Factors
 
 # Blatt-Weisskopf form factors for different orbital angular momenta
