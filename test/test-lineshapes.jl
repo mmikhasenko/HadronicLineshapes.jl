@@ -56,6 +56,21 @@ pL3 = MomentumPower{3}()
     @test pL3(2.0) == 8.0
 end
 
+@testset "MomentumPower with squared masses" begin
+    m0, m1, m2 = 1.6, 0.1, 0.2
+    p = breakup(m0, m1, m2)
+    @test pL0(m0^2, m1^2, m2^2) ≈ pL0(p)
+    @test pL1(m0^2, m1^2, m2^2) ≈ pL1(p)
+    @test pL2(m0^2, m1^2, m2^2) ≈ pL2(p)
+    @test pL3(m0^2, m1^2, m2^2) ≈ pL3(p)
+
+    # Test with different mass combinations
+    m0, m1, m2 = 2.0, 0.5, 0.3
+    p = breakup(m0, m1, m2)
+    @test pL1(m0^2, m1^2, m2^2) ≈ pL1(p)
+    @test pL2(m0^2, m1^2, m2^2) ≈ pL2(p)
+end
+
 # BlattWeisskopf
 
 bw0 = BlattWeisskopf{0}(1.5)
@@ -80,6 +95,25 @@ end
     @test bw0(1.1) > bw1(1.1) > bw2(1.1) > bw3(1.1)
     refs = (1, 0.9761870601839528, 0.924462392487166, 0.8353277954487898)
     @test all((bw0(3), bw1(3), bw2(3), bw3(3)) .≈ refs)
+end
+
+@testset "BlattWeisskopf with squared masses" begin
+    m0, m1, m2 = 1.6, 0.1, 0.2
+    p = breakup(m0, m1, m2)
+    @test bw0(m0^2, m1^2, m2^2) ≈ bw0(p)
+    @test bw1(m0^2, m1^2, m2^2) ≈ bw1(p)
+    @test bw2(m0^2, m1^2, m2^2) ≈ bw2(p)
+    @test bw3(m0^2, m1^2, m2^2) ≈ bw3(p)
+
+    # Test with different mass combinations
+    m0, m1, m2 = 2.0, 0.5, 0.3
+    p = breakup(m0, m1, m2)
+    @test bw1(m0^2, m1^2, m2^2) ≈ bw1(p)
+    @test bw2(m0^2, m1^2, m2^2) ≈ bw2(p)
+
+    # Test with different scale parameters
+    bw1_alt = BlattWeisskopf{1}(2.0)
+    @test bw1_alt(m0^2, m1^2, m2^2) ≈ bw1_alt(p)
 end
 
 bw1_of_sq = bw1(z -> z^2)

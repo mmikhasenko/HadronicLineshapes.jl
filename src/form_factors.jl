@@ -40,6 +40,10 @@ sqrt(z²^5 / chi_poly5(z²)))
 sqrt(z²^6 / chi_poly6(z²)))
 (ff::BlattWeisskopf{7})(p::Number) = (z² = (ff.d * p)^2;
 sqrt(z²^7 / chi_poly7(z²)))
+
+# Three-argument call pattern: accepts squared masses
+(ff::BlattWeisskopf{L})(m0sq::Number, m1sq::Number, m2sq::Number) where {L} =
+    ff(breakup(sqrt(m0sq), sqrt(m1sq), sqrt(m2sq)))
 #
 chi_poly0(z²) = one(z²)
 chi_poly1(z²) = 1 + z²
@@ -62,6 +66,10 @@ chi_poly7(z²) =
 # threshold p^L
 struct MomentumPower{L} <: AbstractFlexFunc end
 (ff::MomentumPower{L})(p::Number) where {L} = p^L
+
+# Three-argument call pattern: accepts squared masses
+(ff::MomentumPower{L})(m0sq::Number, m1sq::Number, m2sq::Number) where {L} =
+    ff(breakup(sqrt(m0sq), sqrt(m1sq), sqrt(m2sq)))
 
 orbital_momentum(x::BlattWeisskopf{L}) where {L} = L
 orbital_momentum(x::MomentumPower{L}) where {L} = L
