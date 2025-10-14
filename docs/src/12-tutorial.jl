@@ -84,6 +84,8 @@ end
 
 # ## Operations
 
+# Since the lineshapes are defined as subtypes of `AbstractFlexFunc`, they can be combined using arithmetic operations.
+
 # Combine functions using arithmetic operations
 combined = 2.0 * bw1 + 1.5 * bw2
 @show combined(2.0)
