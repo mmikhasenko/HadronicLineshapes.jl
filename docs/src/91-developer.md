@@ -58,7 +58,6 @@ pre-commit run -a
 
 **Now, you can only commit if all the pre-commit tests pass**.
 
-
 ### Link checking locally
 
 We use `lychee` for link checking in CI. You can run it locally to avoid waiting for CI:
