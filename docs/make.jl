@@ -51,4 +51,8 @@ makedocs(;
     ],
 )
 
-deploydocs(; repo = "github.com/mmikhasenko/HadronicLineshapes.jl")
+deploydocs(;
+    repo = "github.com/mmikhasenko/HadronicLineshapes.jl",
+    devbranch = "main",
+    versions = ["stable" => "v^", "v#.#", "dev" => "main"],
+)
