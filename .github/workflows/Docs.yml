@@ -2,11 +2,12 @@ name: Docs
 
 on:
     push:
-        # No `paths` here: that filter also applies to tags, so versioned
-        # docs never built after TagBot tagged v0.4.2.
         branches:
             - main
-        tags: ["v*"]
+        paths:
+            - "docs/**"
+            - "src/**"
+            - "*.toml"
     pull_request:
         branches:
             - main

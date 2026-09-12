@@ -168,6 +168,4 @@ After that, you only need to wait and verify:
 - Follow the link and wait for a comment on the auto-merge
 - The comment should said all is well and auto-merge should occur shortly
 - After the merge happens, TagBot will trigger and create a new GitHub tag. Check on <https://github.com/mmikhasenko/HadronicLineshapes.jl/releases>
-- After the release is created, a Docs workflow must run for the **tag** (for example `v0.4.3`), not only for `main`. A `main` run updates `/dev/` only.
-- If that tag job does not appear, start it manually: Actions → Docs → Run workflow → select the new tag.
-- After it passes, the [stable docs](https://mmikhasenko.github.io/HadronicLineshapes.jl/stable) should show the new version. Check the version selector (`stable`, `v0.4`, `dev`) and the Breit-Wigner width formula.
+- Documentation is deployed from `main`. After a docs change is merged, the [package docs](https://mmikhasenko.github.io/HadronicLineshapes.jl/) update. There is no per-release docs version.

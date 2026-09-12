@@ -12,7 +12,7 @@ body:
               - You have checked the [documentation](https://mmikhasenko.github.io/HadronicLineshapes.jl) and haven't found enough information
               - There is not an [existing issue](https://github.com/mmikhasenko/HadronicLineshapes.jl/issues) with the same question
 
-              - You have read the [contributing guide](https://mmikhasenko.github.io/HadronicLineshapes.jl/dev/90-contributing/)
+              - You have read the [contributing guide](https://mmikhasenko.github.io/HadronicLineshapes.jl/90-contributing/)
 
 
               - You are following the [code of conduct](https://github.com/mmikhasenko/HadronicLineshapes.jl/blob/main/CODE_OF_CONDUCT.md)

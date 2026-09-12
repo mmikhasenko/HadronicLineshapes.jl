@@ -1,6 +1,6 @@
 # HadronicLineshapes
 
-[![Documentation](https://img.shields.io/badge/docs-dev-blue.svg)](https://mmikhasenko.github.io/HadronicLineshapes.jl/dev)
+[![Documentation](https://img.shields.io/badge/docs-latest-blue.svg)](https://mmikhasenko.github.io/HadronicLineshapes.jl)
 [![Build Status](https://github.com/mmikhasenko/HadronicLineshapes.jl/workflows/Test/badge.svg)](https://github.com/mmikhasenko/HadronicLineshapes.jl/actions)
 [![Test workflow status](https://github.com/mmikhasenko/HadronicLineshapes.jl/actions/workflows/Test.yml/badge.svg?branch=main)](https://github.com/mmikhasenko/HadronicLineshapes.jl/actions/workflows/Test.yml?query=branch%3Amain)
 [![Lint workflow Status](https://github.com/mmikhasenko/HadronicLineshapes.jl/actions/workflows/Lint.yml/badge.svg?branch=main)](https://github.com/mmikhasenko/HadronicLineshapes.jl/actions/workflows/Lint.yml?query=branch%3Amain)
@@ -38,7 +38,7 @@ All functions are inherited from `AbstractFlexFunc`, the base type that support 
 ## Contributing
 
 Contributions are very welcome! I
-Have a look at the [contributing guide directly on GitHub](docs/src/90-contributing.md) or the [contributing page on the website](https://mmikhasenko.github.io/HadronicLineshapes.jl/dev/90-contributing/).
+Have a look at the [contributing guide directly on GitHub](docs/src/90-contributing.md) or the [contributing page on the website](https://mmikhasenko.github.io/HadronicLineshapes.jl/90-contributing/).
 
 ## License
 
