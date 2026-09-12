@@ -54,5 +54,6 @@ makedocs(;
 deploydocs(;
     repo = "github.com/mmikhasenko/HadronicLineshapes.jl",
     devbranch = "main",
-    versions = ["stable" => "v^", "v#.#", "dev" => "main"],
+    # "dev" is the docs folder (devurl), not the git branch.
+    versions = ["stable" => "v^", "v#.#", "dev" => "dev"],
 )
