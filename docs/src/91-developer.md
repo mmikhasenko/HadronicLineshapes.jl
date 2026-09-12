@@ -168,4 +168,4 @@ After that, you only need to wait and verify:
 - Follow the link and wait for a comment on the auto-merge
 - The comment should said all is well and auto-merge should occur shortly
 - After the merge happens, TagBot will trigger and create a new GitHub tag. Check on <https://github.com/mmikhasenko/HadronicLineshapes.jl/releases>
-- Documentation is deployed from `main`. After a docs change is merged, the [package docs](https://mmikhasenko.github.io/HadronicLineshapes.jl/) update. There is no per-release docs version.
+- The package remains versioned by those tags. The [documentation site](https://mmikhasenko.github.io/HadronicLineshapes.jl/) always follows `main`; older releases are not kept as separate docs.
