@@ -30,10 +30,10 @@ F_l^2(z) = \frac{z^{2l}}{\chi_l(z^2)}
 
 where:
 
-- $z = d \cdot p$ is the scaled momentum
-- $d$ is the scale parameter (typically the interaction radius)
-- $p$ is the breakup momentum
-- $\chi_l(z^2)$ is an order-$l$ polynomial of $z^2$
+- the quantity $z = d \cdot p$ is the scaled momentum
+- the $d$ is the scale parameter (typically the interaction radius)
+- the $p$ is the breakup momentum
+- the $\chi_l(z^2)$ is an order-$l$ polynomial of $z^2$
 
 The function returns $F_l$, taking a square root of the $F_l^2$ expression.
 
