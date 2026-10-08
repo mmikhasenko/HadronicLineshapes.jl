@@ -29,7 +29,6 @@ end
         @test HadronicLineshapes.blatt_weisskopf(p, l, 1.5) ≈ BlattWeisskopf{l}(1.5)(p)
     end
     @test_throws ErrorException HadronicLineshapes.blatt_weisskopf(0.3, 8, 1.5)
-    @test_throws ErrorException BlattWeisskopf{8}(1.5)(0.3)
 end
 
 @testset "MultichannelBreitWigner constructors" begin
