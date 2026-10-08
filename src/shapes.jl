@@ -5,10 +5,13 @@ BW(σ, m, Γ) = 1 / (m^2 - σ - 1im * m * Γ)
 
 # ## MultichannelBreitWigner
 
-@with_kw struct MultichannelBreitWigner{N} <: AbstractFlexFunc
+@with_kw struct MultichannelBreitWigner{N,C<:NamedTuple{(:gsq, :ma, :mb, :l, :d)}} <:
+                AbstractFlexFunc
     m::Float64
-    channels::SVector{N,<:NamedTuple{(:gsq, :ma, :mb, :l, :d)}}
+    channels::SVector{N,C}
 end
+MultichannelBreitWigner{N}(m::Real, channels::SVector{N,C}) where {N,C} =
+    MultichannelBreitWigner{N,C}(m, channels)
 
 # MultichannelBreitWigner constructor from Vector
 function MultichannelBreitWigner(
@@ -23,9 +26,8 @@ function (bw::MultichannelBreitWigner)(σ::Number)
     m0 = bw.m
     mΓ = sum(bw.channels) do channel
         @unpack gsq, ma, mb, l, d = channel
-        FF = BlattWeisskopf{l}(d)
         _p = breakup(sqrt(σ), ma, mb)
-        gsq * 2_p / sqrt(σ) * FF(_p)^2
+        gsq * 2_p / sqrt(σ) * blatt_weisskopf(_p, l, d)^2
     end
     BW(σ, m0, mΓ / m0)
 end
@@ -39,12 +41,11 @@ end
 
 function MultichannelBreitWigner(m::Real, Γ::Real, ma::Number, mb::Number, l::Int, d::Real)
     _p0 = breakup(m, ma, mb)
-    FF = BlattWeisskopf{l}(d)
-    gsq = m * Γ / (2_p0) * m / FF(_p0)^2
+    gsq = m * Γ / (2_p0) * m / blatt_weisskopf(_p0, l, d)^2
     return MultichannelBreitWigner(m, SVector((; gsq, ma, mb, l, d)))
 end
 MultichannelBreitWigner(m::Float64, Γ::Float64) =
-    MultichannelBreitWigner{1}(m, Γ, 0.0, 0.0, 0, 1.0)
+    MultichannelBreitWigner(m, Γ, 0.0, 0.0, 0, 1.0)
 
 
 
@@ -65,8 +66,7 @@ BreitWigner(m::Float64, Γ::Float64) =
 function (bw::BreitWigner)(σ::Number)
     @unpack m, ma, mb, l, d = bw
     _p0 = breakup(m, ma, mb)
-    FF = BlattWeisskopf{l}(d)
-    gsq = m * bw.Γ / (2_p0) * m / FF(_p0)^2
+    gsq = m * bw.Γ / (2_p0) * m / blatt_weisskopf(_p0, l, d)^2
     mbw = MultichannelBreitWigner(m, SVector((; gsq, ma, mb, l, d)))
     mbw(σ)
 end

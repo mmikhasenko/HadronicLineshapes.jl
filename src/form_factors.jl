@@ -5,7 +5,7 @@ Create a lambda-function for the Blatt-Weisskopf barrier factor.
 This functor expects momentum as an input.
 
 ```math
-F_l^2 = \frac(z^{2l}}{\\chi_l(z^2)}
+F_l^2 = \\frac{z^{2l}}{\\chi_l(z^2)}
 ```
 where \$\\chi_l\$ is an order-l polynomial of \$z^2\$.
 The function returns `F_l`, taking a square root of the \$F_l^2\$ expression.
@@ -17,22 +17,36 @@ The function returns `F_l`, taking a square root of the \$F_l^2\$ expression.
 ```julia
 bw = BlattWeisskopf{1}(1.5)
 result = bw(0.5)  # Call with momentum 0.5
+```
+
+See also [`HadronicLineshapes.blatt_weisskopf`](@ref) for a type-stable call with a runtime `l`.
 """
 struct BlattWeisskopf{L} <: AbstractFlexFunc
     d::Float64
 end
 breakup(m, m1, m2) =
     sqrt((m - (m1 + m2)) * (m + (m1 + m2))) * sqrt((m - (m1 - m2)) * (m + (m1 - m2))) / 2m
-(ff::BlattWeisskopf{L})(p::Number) where {L} =
-    error("BlattWeisskopf{L} is not defined for L>7")
 (ff::BlattWeisskopf{0})(p::Number) = one(p)
-(ff::BlattWeisskopf{1})(p::Number) = (z² = (ff.d * p)^2; sqrt(z² / chi_poly1(z²)))
-(ff::BlattWeisskopf{2})(p::Number) = (z² = (ff.d * p)^2; sqrt(z²^2 / chi_poly2(z²)))
-(ff::BlattWeisskopf{3})(p::Number) = (z² = (ff.d * p)^2; sqrt(z²^3 / chi_poly3(z²)))
-(ff::BlattWeisskopf{4})(p::Number) = (z² = (ff.d * p)^2; sqrt(z²^4 / chi_poly4(z²)))
-(ff::BlattWeisskopf{5})(p::Number) = (z² = (ff.d * p)^2; sqrt(z²^5 / chi_poly5(z²)))
-(ff::BlattWeisskopf{6})(p::Number) = (z² = (ff.d * p)^2; sqrt(z²^6 / chi_poly6(z²)))
-(ff::BlattWeisskopf{7})(p::Number) = (z² = (ff.d * p)^2; sqrt(z²^7 / chi_poly7(z²)))
+(ff::BlattWeisskopf{L})(p::Number) where {L} = blatt_weisskopf(p, L, ff.d)
+
+"""
+    blatt_weisskopf(p, l::Int, d)
+
+Value of the Blatt-Weisskopf factor `F_l(d p)` for an orbital momentum `l` given at runtime.
+Equivalent to `BlattWeisskopf{l}(d)(p)`, but type-stable when `l` is not a compile-time constant.
+"""
+function blatt_weisskopf(p::Number, l::Int, d::Number)
+    z² = (d * p)^2
+    l == 0 && return sqrt(one(z²))
+    l == 1 && return sqrt(z² / chi_poly1(z²))
+    l == 2 && return sqrt(z²^2 / chi_poly2(z²))
+    l == 3 && return sqrt(z²^3 / chi_poly3(z²))
+    l == 4 && return sqrt(z²^4 / chi_poly4(z²))
+    l == 5 && return sqrt(z²^5 / chi_poly5(z²))
+    l == 6 && return sqrt(z²^6 / chi_poly6(z²))
+    l == 7 && return sqrt(z²^7 / chi_poly7(z²))
+    error("Blatt-Weisskopf factor is not defined for l=$l (supported: 0 ≤ l ≤ 7)")
+end
 
 # Three-argument call pattern: accepts squared masses
 (ff::BlattWeisskopf{L})(m0sq::Number, m1sq::Number, m2sq::Number) where {L} =
