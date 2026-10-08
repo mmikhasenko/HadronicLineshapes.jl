@@ -51,6 +51,12 @@ The function returns $F_l$, taking a square root of the $F_l^2$ expression.
 
     The package supports Blatt-Weisskopf form factors for orbital angular momentum $l = 0, 1, 2, 3, 4, 5, 6, 7$.
 
+!!! note "Orbital momentum known only at runtime"
+    `BlattWeisskopf{L}` carries `L` in its type. When `l` is a runtime value (e.g. a struct field),
+    use `HadronicLineshapes.blatt_weisskopf(p, l, d)` instead of `BlattWeisskopf{l}(d)(p)`:
+    it returns the same value but is type-stable and does not allocate.
+    `BreitWigner`, `MultichannelBreitWigner` and `Flatte` use it internally.
+
 ## Momentum Power Form Factors
 
 The `MomentumPower` form factors represent simple momentum-dependent terms in scattering:
